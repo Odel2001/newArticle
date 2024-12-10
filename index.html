@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTU ph</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="media/logo.jpg" alt="Logo"></a>
+            <div class="nav-links">
+                <ul>
+                  <li><a href="">HOME</a></li>
+                  <li><a href="">ABOUT</a></li>
+                  <li><a href="article.html">ARTICLE</a></li>
+                  <li><a href="#" id="toggleForm">LOGIN</a></li>
+                  <li><a href="">CONTACT</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="header-text">
+            <h1>Welcome to Cebu Technological University</h1>
+            <p>Providing quality education to students from all over the Philippines.</p>
+       <a href="" class="hero-btn">Visit Us To Know More</a>
+        </div>
+    </section>
+
+    
+    <div class="form-container" id="formContainer">
+        
+        <button id="closeForm" class="close-btn">&times;</button>
+        
+        <!-- Login Form -->
+        <div id="loginForm">
+            <h3>Login</h3>
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                
+                <span id="togglePassword" class="eye-icon"><i class="bx bxs-show"></i></span>
+            </div>
+            <button id="loginSubmit">Log In</button>
+            <p>Don't have an account? <span id="switchToSignUp">Sign Up</span></p>
+        </div>
+
+        <!-- Sign-Up Form -->
+        <div id="signUpForm" style="display: none;">
+            <h3>Sign Up</h3>
+            <input type="text" id="signUpName" placeholder="Name" required>
+            <input type="email" id="signUpEmail" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="signUpPassword" placeholder="Password" required>
+                
+                <span id="toggleSignUpPassword" class="eye-icon"><i class="bx bxs-show"></i></span>
+            </div>
+            <button id="signUpSubmit">Sign Up</button>
+            <p>Already have an account? <span id="switchToLogin">Log In</span></p>
+        </div>
+    </div>
+
+    <script>
+        
+        document.getElementById("toggleForm").addEventListener("click", function () {
+            const formContainer = document.getElementById("formContainer");
+            const header = document.querySelector(".header");
+
+            if (formContainer.style.display === "none" || !formContainer.style.display) {
+                formContainer.style.display = "block";
+                header.classList.add("blurred");
+            } else {
+                formContainer.style.display = "none";
+                header.classList.remove("blurred");
+            }
+        });
+
+        
+        document.getElementById("closeForm").addEventListener("click", function () {
+            const formContainer = document.getElementById("formContainer");
+            const header = document.querySelector(".header");
+
+            formContainer.style.display = "none";
+            header.classList.remove("blurred");
+        });
+
+        
+        document.getElementById("switchToSignUp").addEventListener("click", function () {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("signUpForm").style.display = "block";
+        });
+
+        
+        document.getElementById("switchToLogin").addEventListener("click", function () {
+            document.getElementById("signUpForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+        });
+
+        
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            const passwordField = document.getElementById("loginPassword");
+            const icon = document.getElementById("togglePassword").querySelector("i");
+
+            const type = passwordField.type === "password" ? "text" : "password";
+            passwordField.type = type;
+
+            
+            icon.classList.toggle("bxs-show");
+            icon.classList.toggle("bxs-hide");
+        });
+
+        
+        document.getElementById("toggleSignUpPassword").addEventListener("click", function () {
+            const passwordField = document.getElementById("signUpPassword");
+            const icon = document.getElementById("toggleSignUpPassword").querySelector("i");
+
+            const type = passwordField.type === "password" ? "text" : "password";
+            passwordField.type = type;
+
+            
+            icon.classList.toggle("bxs-show");
+            icon.classList.toggle("bxs-hide");
+        });
+    </script>
+</body>
+</html>
